@@ -1,38 +1,51 @@
-# Job Description Analysis
+# Multi-Agent AI System for job advertisements analysis via LangGraph RAG
 
-A comprehensive machine learning and AI pipeline for analyzing job descriptions using traditional NLP techniques and modern Generative AI approaches. This project extracts structured information from job advertisements and provides intelligent matching capabilities.
+Built a multi-agent AI system with LangChain, LangGraph, ChromaDB, and LangFuse to demonstrate an intelligent RAG workflow. It analyzes, evaluates and improves job advertisements from Seek. Then answer questions from users such as HR or job seekers based on analyzed job advertisements and uploaded CVs to help users target the most suitable applicants or job opportunities. The workflow is in streaming style. It offers various measurement metrics such as ROUGE, Bert Score and customised RAG quality.  The average latency for each job advertisement processing is around 8 seconds, and the cost is around 0.05 AUD.
 
-## 🎯 Project Overview
+## Project Overview
 
-This repository contains a hybrid pipeline that combines traditional NLP methods with Generative AI to extract and analyze structured information from job descriptions. The system can:
+This repository contains a hybrid pipeline that combines 2 Multi-Agent pipeline with RAG and conditional edges.
 
-- Extract skills, responsibilities, and requirements from job descriptions
-- Perform intelligent matching between job descriptions and candidate profiles
-- Provide measurement and evaluation using BERTScore and ROUGE metrics
-- Support RAG (Retrieval-Augmented Generation) workflows for document analysis
+- Extract skills, responsibilities, and requirements in good format from job advertisements. Then evaluate and improve the original job advertisements.
 
-## 📁 Repository Structure
+- <img width="681" height="616" alt="image" src="https://github.com/user-attachments/assets/864edbb6-28e2-43cc-892c-5de913408abf" />
+
+- Perform intelligent matching between improved job advertisements and candidate CVs.
+
+- <img width="820" height="690" alt="image" src="https://github.com/user-attachments/assets/7fd493eb-6777-4950-966f-2b4b99c6be10" />
+
+The system also contains following functions.
+
+- Multi-document processing in streaming style.
+- Version control and self-refreshment in Vector Store.
+- Clear and human-friendly workflow outputs.
+- Consistent chat history with memory and thread management.
+- Measurement and evaluation using BERTScore, ROUGE metrics, and customised RAG metrics.
+- Local logging system and monitoring system.
+- LangFuse tracing to catch exchanged messages, erros, latencies and costs.
+
+## Repository Structure
 
 ```
 job-description-analysis/
-├── 01-data-import.ipynb              # Data import and basic exploration
-├── 02-data-preprocessing.ipynb       # Data cleaning and preprocessing
-├── 03-langgraph-job-description.ipynb # LangGraph pipeline with LangFuse integration
-├── 04-measurement.ipynb              # Evaluation using BERTScore and ROUGE
-├── 05-langgrph-agentic-rag-client-help.ipynb # RAG agent for document analysis
-├── job-description-data/              # Dataset files
-│   ├── ads-50k.csv                   # Main dataset
-│   ├── ads-50k.json                  # JSON format dataset
-│   └── sample_df.csv                 # Sample data for testing
-├── chroma_db/                        # ChromaDB vector database
-├── client-help-logs/                 # Client interaction logs
-├── job-description-logs/             # Processing logs
-├── instructions/                     # Project documentation
-├── reference/                        # Reference implementations
-└── requirements.txt                  # Python dependencies
+├── 01-data-import.ipynb                       # Data import and basic exploration
+├── 02-data-preprocessing.ipynb                # Data cleaning and preprocessing
+├── 03-langgraph-job-description.ipynb         # LangGraph pipeline with LangFuse integration to analyse, evaluate and improve job advertisements.
+├── 04-measurement.ipynb                       # Evaluation using BERTScore and ROUGE
+├── 05-langgrph-agentic-rag-client-help.ipynb  # RAG assistant for HR/job-seeker to match suitable applicants or opportunites based on processed job advertisements and CVs.
+├── job-description-data/                      # Dataset files
+│   ├── ads-50k.csv                            # Main dataset
+│   ├── ads-50k.json                           # JSON format dataset
+│   └── sample_df.csv                          # Sample data for testing
+├── chroma_db/                                 # ChromaDB vector database
+├── client-help-logs/                          # RAG assistant logs and outputs.
+├── job-description-logs/                      # Job advertisements analysis and processing outputs.
+├── instructions/                              # Project documentation
+├── reference/                                 # Reference implementations
+└── requirements.txt                           # Python dependencies
 ```
 
-## 🚀 Features
+## Features
 
 ### 1. Data Processing Pipeline
 - **Data Import**: Load and explore job description datasets
@@ -108,7 +121,7 @@ jupyter notebook 04-measurement.ipynb
 jupyter notebook 05-langgrph-agentic-rag-client-help.ipynb
 ```
 
-## 🔧 Key Technologies
+## Key Technologies
 
 - **LangChain**: Framework for LLM applications
 - **LangGraph**: Workflow orchestration
@@ -120,7 +133,7 @@ jupyter notebook 05-langgrph-agentic-rag-client-help.ipynb
 - **Pandas**: Data manipulation
 - **Scikit-learn**: Machine learning utilities
 
-## 📈 Performance Metrics
+## Performance Metrics
 
 The system provides comprehensive evaluation using:
 - **BERTScore**: Measures semantic similarity between generated and reference text
@@ -128,7 +141,7 @@ The system provides comprehensive evaluation using:
 - **Cosine Similarity**: Content similarity analysis
 - **Custom Metrics**: Domain-specific evaluation criteria
 
-## 📝 Data Format
+## Data Format
 
 The system processes job descriptions in JSON format with the following structure:
 ```json
@@ -145,7 +158,7 @@ The system processes job descriptions in JSON format with the following structur
 }
 ```
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch
@@ -153,15 +166,15 @@ The system processes job descriptions in JSON format with the following structur
 4. Add tests if applicable
 5. Submit a pull request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 📞 Support
+## Support
 
 For questions or support, please open an issue in the repository or contact the development team.
 
-## 🔮 Future Enhancements
+## Future Enhancements
 
 - [ ] Multi-language support
 - [ ] Advanced skill matching algorithms
